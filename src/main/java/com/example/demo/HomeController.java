@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"ctx","cmm","mgr","tea","uss"})
+@SessionAttributes({"ctx","cmm","mgr","uss"})
 public class HomeController {
 	@Autowired HttpSession session;
 	@Autowired HttpServletRequest request;
-	
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -28,49 +27,25 @@ public class HomeController {
     	session.setAttribute("ctx", ctx);
     	session.setAttribute("cmm", ctx+"/resources/cmm");
     	session.setAttribute("mgr", ctx+"/resources/sym/mgr");
-    	session.setAttribute("tea", ctx+"/resources/sym/tea");
     	session.setAttribute("stu", ctx+"/resources/uss");
-    	
         logger.info("Project Initialized ... ");
         
         return "index";
     }
-    /*
-     * uss (User Service Support) 디렉토리 이동시 user 사용
-     * */
+    
     @GetMapping("/user/{page}")
     public String user(@PathVariable String page) {
         logger.info("이동 파일: " + page);
         return String.format("user:%s", page);
     }
-    /*
-     * sym (System Manager) 디렉토리 이동시 admin 사용
-     * */
-    @GetMapping("/admin/{dir}/{page}") 
-    public String admin(@PathVariable String dir, 
-    						@PathVariable String page) {
-        logger.info("이동 디렉토리: " + dir);
-        logger.info("이동 파일: " + page);
-        return String.format("admin:%s/%s", dir, page);
-    }
-    /*
-     * sym (System Manager) 디렉토리 이동시 admin 사용
-     * */
+    
+    
     @GetMapping("/mgr/{page}") 
     public String manager(@PathVariable String page) {
         logger.info("이동 파일: " + page);
         return String.format("mgr:%s", page);
     }
-    /*
-     * cop (Content Operater) 디렉토리 이동시 content 사용
-     * */
-    @GetMapping("/content/{dir}/{page}") 
-    public String content(@PathVariable String dir, 
-    						@PathVariable String page) {
-        logger.info("이동 디렉토리: " + dir);
-        logger.info("이동 파일: " + page);
-        return String.format("content:%s/%s", dir, page);
-    }
+    
 
   
 	
