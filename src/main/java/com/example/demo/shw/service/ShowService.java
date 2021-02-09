@@ -1,6 +1,5 @@
 package com.example.demo.shw.service;
 
-import com.example.demo.cmm.utl.DummyGenerator;
 import com.example.demo.cmm.utl.Pagination;
 import com.example.demo.shw.service.Show;
 
@@ -23,11 +22,14 @@ import java.util.stream.Collectors;
 @Service
 public class ShowService {
 	
-	@Autowired DummyGenerator dummy;
 	@Autowired ShowMapper showMapper;
 	
 	public int add(Show show) {
 		return showMapper.insert(show);
+	}
+	
+	public List<Show> list() {
+		return showMapper.selectAll();
 	}
 	    
 	public int count() {
