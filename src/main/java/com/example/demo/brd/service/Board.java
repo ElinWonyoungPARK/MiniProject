@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class Board {
 	private int boardNum;
 	private String title, content, date, id;
+	// abc
 }
 /*
 create table boards(
