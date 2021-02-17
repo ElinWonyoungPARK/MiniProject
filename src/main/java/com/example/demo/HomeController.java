@@ -28,7 +28,7 @@ public class HomeController {
     	session.setAttribute("ctx", ctx);
     	session.setAttribute("cmm", session.getAttribute("ctx")+"/resources/cmm");
     	session.setAttribute("brd", session.getAttribute("ctx")+"/resources/brd");
-        logger.info("Project Initialized ... ");
+        logger.info("############### Project Initialized ... ");
         return "index";
     }
     
